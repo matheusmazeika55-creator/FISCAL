@@ -122,3 +122,103 @@ elif menu == "Sobre o Sistema":
     st.title("Sobre")
 
     st.write("Sistema interno desenvolvido para consulta de centro de custo e CFOP.")
+    st.subheader("Consulta CFOP de Entrada")
+
+cfop_saida = st.selectbox(
+    "CFOP da nota",
+    [
+        "5101","6101",
+        "5102","6102",
+        "6107","6108",
+        "5401","6401",
+        "5405","6404","5403","6403",
+        "5656","6656"
+    ]
+)
+
+if cfop_saida and not resultado.empty:
+
+    tipo = linha["TIPO DE LANÇAMENTO"]
+
+    tabela_cfop = {
+
+        "5101": {
+            "REVENDA": "1102",
+            "USO E CONSUMO": "1556",
+            "INDUSTRIALIZAÇÃO": "1104",
+            "IMOBILIZADO": "1551",
+            "USO NO SERVIÇO": "1128"
+        },
+
+        "6101": {
+            "REVENDA": "2102",
+            "USO E CONSUMO": "2556",
+            "INDUSTRIALIZAÇÃO": "2101",
+            "IMOBILIZADO": "2551",
+            "USO NO SERVIÇO": "2128"
+        },
+
+        "5102": {
+            "REVENDA": "1102",
+            "USO E CONSUMO": "1556",
+            "INDUSTRIALIZAÇÃO": "1104",
+            "IMOBILIZADO": "1551",
+            "USO NO SERVIÇO": "1128"
+        },
+
+        "6102": {
+            "REVENDA": "2102",
+            "USO E CONSUMO": "2557",
+            "INDUSTRIALIZAÇÃO": "2102",
+            "IMOBILIZADO": "2552",
+            "USO NO SERVIÇO": "2128"
+        },
+
+        "5401": {
+            "REVENDA": "1403",
+            "USO E CONSUMO": "1407",
+            "INDUSTRIALIZAÇÃO": "1401",
+            "IMOBILIZADO": "1406",
+            "USO NO SERVIÇO": "1128"
+        },
+
+        "6401": {
+            "REVENDA": "2403",
+            "USO E CONSUMO": "2407",
+            "INDUSTRIALIZAÇÃO": "2401",
+            "IMOBILIZADO": "2406",
+            "USO NO SERVIÇO": "2128"
+        },
+
+        "5405": {
+            "REVENDA": "1403",
+            "USO E CONSUMO": "1407",
+            "INDUSTRIALIZAÇÃO": "1401",
+            "IMOBILIZADO": "1406",
+            "USO NO SERVIÇO": "1128"
+        },
+
+        "6404": {
+            "REVENDA": "2403",
+            "USO E CONSUMO": "2407",
+            "INDUSTRIALIZAÇÃO": "2401",
+            "IMOBILIZADO": "2406",
+            "USO NO SERVIÇO": "2128"
+        }
+    }
+
+    if cfop_saida in tabela_cfop:
+
+        tipo_limpo = tipo.replace("E_", "").strip()
+
+        if tipo_limpo in tabela_cfop[cfop_saida]:
+
+            cfop_entrada = tabela_cfop[cfop_saida][tipo_limpo]
+
+            st.success(f"CFOP de entrada: {cfop_entrada}")
+
+        else:
+            st.warning("Tipo de operação não encontrado na regra")
+
+    else:
+        st.warning("CFOP não cadastrado na tabela")
