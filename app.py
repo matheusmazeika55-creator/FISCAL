@@ -154,8 +154,6 @@ if not resultado.empty:
 
     else:
         st.warning("CFOP não cadastrado")
-            else:
-        st.warning("CFOP não cadastrado")
 
 st.markdown("---")
 
