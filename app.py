@@ -1,6 +1,38 @@
 import streamlit as st
 import pandas as pd
 import streamlit as st
+st.markdown("""
+<style>
+
+.stApp {
+    background-color: #0B2A45;
+}
+
+h1, h2, h3 {
+    color: white;
+}
+
+.stTextInput label {
+    color: white;
+}
+
+.stSelectbox label {
+    color: white;
+}
+
+.stButton>button {
+    background-color: #FF3B00;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
+
+.stButton>button:hover {
+    background-color: #e63500;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 st.set_page_config(page_title="Sistema de Conferência", layout="wide")
 
