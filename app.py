@@ -154,3 +154,12 @@ if not resultado.empty:
 
     else:
         st.warning("CFOP não cadastrado")
+            else:
+        st.warning("CFOP não cadastrado")
+
+st.markdown("---")
+
+st.markdown(
+    "<p style='text-align: center; color: gray; font-size:14px;'>Criado por Matheus Mazeika</p>",
+    unsafe_allow_html=True
+)
