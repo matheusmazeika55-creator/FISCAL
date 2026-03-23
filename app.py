@@ -126,8 +126,6 @@ elif menu == "Consulta CFOP":
 
 elif menu == "Sobre":
 
-    st.title("Sobre o sistema")
+    st.title("CRIADO POR MATHEUS MAZEIKA")
 
-    st.write("CRIADO POR MATHEUS MAZEIKA.")
-    else:
-        st.warning("CFOP não cadastrado na tabela")
+    st.write("Sistema interno para consulta fiscal.")
